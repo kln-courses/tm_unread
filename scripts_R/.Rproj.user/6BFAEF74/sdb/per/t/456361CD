@@ -1,0 +1,18 @@
+{
+    "contents" : "rm(list = ls())\ndd = '~/courses/au_summer_university/summer_u2016/supervision/encoding/'\nsetwd(dd)\ndir()\nlibrary(tm)\n# import files with IETF language tag\ncor  <- Corpus(DirSource(dd, encoding = \"UTF-8\"), readerControl = list(language = \"ES\"))\nfilenames <- names(cor)\n\ndtm <- DocumentTermMatrix(cor)\n\nsome.v <- c('I','am','a','Swede')\npaste(some.v, collapse = ' ')\nlibrary(stringr)\nstr_c(some.v, collapse = ' ')\nhelp(package = 'stringr')\n",
+    "created" : 1469523419186.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1931797799",
+    "id" : "456361CD",
+    "lastKnownWriteTime" : 1470169960,
+    "path" : "~/courses/au_summer_university/summer_u2016/supervision/spanish_import.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 19,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

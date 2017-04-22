@@ -1,0 +1,18 @@
+{
+    "contents" : "library(rvest)\nlibrary(plyr)\nwalkingdead.l <- html(\"http://www.imdb.com/title/tt1520211/\")\nwalkingdead.l %>%\n  html_nodes(\"#titleCast .itemprop span\") %>%\n  html_text()\n\n\ncast.v <- html_text(html_nodes(walkingdead.l,\"#titleCast .itemprop span\"))\n\n",
+    "created" : 1468914928037.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3730016173",
+    "id" : "D01288E6",
+    "lastKnownWriteTime" : 1468918133,
+    "path" : "~/courses/au_summer_university/summer_u2016/classes/tutorials/web_harvest.R",
+    "project_path" : "web_harvest.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 17,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

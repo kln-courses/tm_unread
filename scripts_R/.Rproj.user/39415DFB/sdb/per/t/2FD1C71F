@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "library(XML)\n# read and parse html file\n# no noise\nurl = 'http://apiolaza.net/babel'\n# noise\nurl = 'http://www.biblestudytools.com/job/'\ndoc.html = htmlTreeParse(url,\n           useInternal = TRUE)\n# extract paragraphs and ublist\ndoc.text = unlist(xpathApply(doc.html, '//p', xmlValue))\n# Replace all \\n by spaces\ndoc.text = gsub('\\\\n', ' ', doc.text)\n# doc.text = gsub('\\\\r', ' ', doc.text)\n#  character vector\ndoc.text = paste(doc.text, collapse = ' ')\n",
+    "created" : 1477473136921.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3172562854",
+    "id" : "2FD1C71F",
+    "lastKnownWriteTime" : 1477555691,
+    "last_content_update" : 1477555691633,
+    "path" : "~/Documents/education/popuplabs/popup_git/code_R/read_htmp.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

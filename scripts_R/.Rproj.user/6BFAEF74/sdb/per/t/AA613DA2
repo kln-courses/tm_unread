@@ -1,0 +1,18 @@
+{
+    "contents" : "library(stylo)\nls('package:stylo')\n",
+    "created" : 1470386039850.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "271902048",
+    "id" : "AA613DA2",
+    "lastKnownWriteTime" : 1470386240,
+    "path" : "~/courses/au_summer_university/summer_u2016/classes/tutorials/stylistics.R",
+    "project_path" : "stylistics.R",
+    "properties" : {
+        "tempName" : "Untitled3"
+    },
+    "relative_order" : 28,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

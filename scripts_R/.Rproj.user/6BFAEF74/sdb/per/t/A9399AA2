@@ -1,0 +1,18 @@
+{
+    "contents" : "# introduction to R as a programming language\nrm(list = ls())\nwd = 'C:/Users/KLN/some_r'\nsetwd(wd)\ndir()\ndrseuss.v <- scan(\"dr_seuss.txt\", what = \"character\", sep=\" \")\ndrseuss.v[1:10]\n### filtering: The extraction of subsets of vectors\na.v <- c(5,2,-3,8)\nb.v <- a.v[a.v*a.v > 8]\n# step by step\naa.v <- a.v*a.v\nidx <- aa.v > 8\na.v[idx]\n# replace elements\na.v <- c(1,3,8,2,20)\na.v[a.v < 3] = 0\n# filtering with which\nidx <- which(a.v < 3)\na.v[idx]\n\n## filtering matrices\na.m <- matrix(c(1:3,2:4),nrow = 3)\nidx = a.m[,2] >= 3\na.m[idx,]\nwhich(a.m >=3)# using which to extract elements\na.m[6] == a.m[3,2]# indexing methods\n\n### control structures\n# if, else\nx <- 1:5\nif (sample(x,1) == 5){\n  print('x is equal to 5')\n}else{\n  print('x is less than five')\n}\n# for loop\nfor (i in 1:5){\n  print(i)\n}\n# combining if and for\ny <- rep(0,length(drseuss.v))\nfor (i in 1:length(drseuss.v)){\n  print(drseuss.v[i])\n  if (drseuss.v[i] == 'I'){\n    y[i] = 1\n  }else if (drseuss.v[i] == 'Sam'){\n    y[i] = 2\n  }else{\n    y[i] = 0\n  }\n}\npar(mfrow=c(1,2))\nplot(y,xlab = 'Time')\nbarplot(c(sum(y == 1),sum(y == 2)), xlab = 'Word', ylab = 'Raw frequency', names.arg=c('I','Sam'))\n\n# vectorize if, else\ny = ifelse(drseuss.v == 'I',1,0)\n\n\n### functions\nadd <- function(a,b){\n  return(a+b)\n}\nadd(2,3)\nbody(add)\nformals(add)\nenvironment(add)\nargs(add)\n# apply a function to each element of a vector\na.v <- 1:5\ny = sapply(a.v, add, 1)\n\nword_dispersion <- function(x,word){\n  x <- tolower(x)\n  y <- ifelse(x == word,1,0)\n  plot(y,xlab = 'Time')\n}\nword_dispersion(drseuss.v,'green')\n\nword_dispersions <- function(x, words){\n  x <- tolower(x)\n  words <- tolower(words)\n  y <- rep(0,length(x))\n  for (i in 1:length(words)){\n    y[x == words[i]] <- i\n  }\n  plot(y,xlab = 'Time',yaxt = \"n\")\n  axis(2,at = 1:length(words),labels = words)\n  return(y)\n}\nw.v <- c('Sam', 'green', 'I') \nwdisp.v = word_dispersions(drseuss.v,w.v)\n\n## applying functions to matrix rows and columns\na.m <- matrix(c(1:3,2:4),nrow = 3)\napply(a.m, 2,sum)\n\n### more little more on lists\na.l = list(words = c('I','am', 'Sam'), freqs = c(71,3,2))\nattributes(a.l)# list tags\na.l$relfreqs <- a.l$freqs/length(drseuss.v)# add list elements\na.l$freqs <- NULL# deleting list elements\n\n# create text concordance list\nfindwords <- function(tf){\n  txt <- scan(tf,\"\")# read in the words from the file, into a vector of mode char\n  wl <- list()\n  for (i in 1:length(txt)){\n    wrd <- txt[i] # ith word in input file\n    wl[[wrd]] <- c(wl[[wrd]],i)# assign ith index to word attribute in list \n  }\n  return(wl)\n}\nseuss_concordance.l <- findwords(\"dr_seuss.txt\")",
+    "created" : 1466495582923.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2839847372",
+    "id" : "A9399AA2",
+    "lastKnownWriteTime" : 1469462368,
+    "path" : "~/courses/au_summer_university/summer_u2016/classes/tutorials/art_of_r.R",
+    "project_path" : "art_of_r.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

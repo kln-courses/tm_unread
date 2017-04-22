@@ -1,0 +1,18 @@
+{
+    "contents" : "# update save file\nresave <- function(..., list = character(), file) {\n  previous  <- load(file)\n  var.names <- c(list, as.character(substitute(list(...)))[-1L])\n  for (var in var.names) assign(var, get(var, envir = parent.frame()))\n  save(list = unique(c(previous, var.names)), file = file)\n}\n# slice text in n bins\nslice_text <- function(text,bin){\n  sliced.text.l <- split(text, cut(1:length(text),bin))\n}\n# sentence tokenizer\ntoken_sent <- function(text, lang = \"en\") {\n  sentannotator <- openNLP::Maxent_Sent_Token_Annotator(language = lang)\n  text <- NLP::as.String(text)# convert to string\n  sentbound <- NLP::annotate(text, sentannotator)\n  sentences <- text[sentbound]# extract sentences\n  return(sentences)# return sentences\n}\n# caps on first letter in char vector\ncapname <- function(name.v){\n  paste(toupper(substr(name.v, 1, 1)), substr(name.v, 2, nchar(name.v)), sep=\"\")\n}\n# remove sparse terms by setting minimum representation in documents\ndocsparse <- function(mindocs,dtm){\n  n = length(row.names(dtm))\n  sparse <- 1 - mindocs/n;\n  dtmreduce <- tm::removeSparseTerms(dtm, sparse)\n  return(dtmreduce)\n}\n\n# compute column variance in matrix\ncolVars <- function(x, na.rm=FALSE, dims=1, unbiased=TRUE, SumSquares=FALSE,\n                    twopass=FALSE) {\n  if (SumSquares) return(colSums(x^2, na.rm, dims))\n  N <- colSums(!is.na(x), FALSE, dims)\n  Nm1 <- if (unbiased) N-1 else N\n  if (twopass) {x <- if (dims==length(dim(x))) x - mean(x, na.rm=na.rm) else\n    sweep(x, (dims+1):length(dim(x)), colMeans(x,na.rm,dims))}\n  (colSums(x^2, na.rm, dims) - colSums(x, na.rm, dims)^2/N) / Nm1\n}\n\n\n# compute row variance in matrix\nrowVars <- function(x) {\n  rowSums((x - rowMeans(x))^2)/(dim(x)[2] - 1)\n}\n\n# prune dtm\nprune <- function(dtm,mx,p){\n  mx <- ceiling(dim(dtm)[1]*mx)\n  dtm <- dtm[,slam::col_sums(as.matrix(dtm) > 0) < mx]\n  dtm <- dtm[,col_sums(dtm) < quantile(slam::col_sums(dtm),p)]\n  return(dtm)\n}",
+    "created" : 1466595771301.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "52656112",
+    "id" : "25D2B1AE",
+    "lastKnownWriteTime" : 1470118765,
+    "path" : "C:/Users/KLN/some_r/util_fun.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

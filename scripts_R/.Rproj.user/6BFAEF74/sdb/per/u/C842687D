@@ -1,0 +1,18 @@
+{
+    "contents" : "testit <- function(x)\n{\n  p1 <- proc.time()\n  Sys.sleep(x)\n  proc.time() - p1 \n}\ntestit(3.7)\n",
+    "created" : 1469628459682.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "3248792368",
+    "id" : "C842687D",
+    "lastKnownWriteTime" : 7011605692497750387,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 22,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

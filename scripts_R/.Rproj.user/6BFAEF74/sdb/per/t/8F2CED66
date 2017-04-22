@@ -1,0 +1,18 @@
+{
+    "contents" : "# import csv as corpus\n\n# change this file location to suit your machine\nfile_loc <- \"C:\\\\Documents and Settings\\\\Administrator\\\\Desktop\\\\Book1.csv\"\n# change TRUE to FALSE if you have no column headings in the CSV\nx <- read.csv(file_loc, header = TRUE)\nrequire(tm)\ncorp <- Corpus(DataframeSource(x))\ndtm <- DocumentTermMatrix(corp)",
+    "created" : 1468836167023.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1862912593",
+    "id" : "8F2CED66",
+    "lastKnownWriteTime" : 1468836226,
+    "path" : "~/courses/au_summer_university/summer_u2016/classes/tutorials/odd_data_formats.R",
+    "project_path" : "odd_data_formats.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 16,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,18 @@
+{
+    "contents" : "dd <- 'C:/Users/KLN/Documents/courses/au_summer_university/summer_u2016/supervision/gutenberg/'\n# url\nfiles.v <- c('http://www.gutenberg.org/cache/epub/25359/pg25359.txt','http://www.gutenberg.org/cache/epub/16247/pg16247.txt',\n  'http://www.gutenberg.org/cache/epub/4265/pg4265.txt')\n# download\nfor (i in 1:length(files.v)){\n  d <- paste0(dd,strsplit(files.v[i],'/')[[1]][length(strsplit(files.v[1],'/')[[1]])])\n  download.file(files.v[i], destfile = d)\n}\n\n\nwd <- \"C:/Users/KLN/Documents/courses/au_summer_university/summer_u2016/supervision/gutenberg\"\nsetwd(wd)\n\nscan('children_url.txt', what = 'character', sep='\\n', encoding = 'UTF-8')\n\n",
+    "created" : 1469646219670.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "373195493",
+    "id" : "50D99B51",
+    "lastKnownWriteTime" : 1469648136,
+    "path" : "~/courses/au_summer_university/summer_u2016/supervision/gutenberg/scrape_g.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled3"
+    },
+    "relative_order" : 23,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

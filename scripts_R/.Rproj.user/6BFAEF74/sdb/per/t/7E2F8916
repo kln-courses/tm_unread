@@ -1,0 +1,18 @@
+{
+    "contents" : "shell.exec('https://cran.r-project.org/web/packages/text2vec/vignettes/glove.html')\n",
+    "created" : 1468315385492.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4076522289",
+    "id" : "7E2F8916",
+    "lastKnownWriteTime" : 1468315418,
+    "path" : "C:/Users/KLN/some_r/word_embedding.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 13,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

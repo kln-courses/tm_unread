@@ -1,0 +1,17 @@
+{
+    "contents" : "rm(list = ls())\n\nload(\"C:/Users/KLN/Documents/projects/loevschal/loevschal_corpus.RData\")\n\nlibrary(plyr)\nlibrary(tm)\nlibrary(slam)\nlibrary(topicmodels)\n### optimal k estimation\nk = 100\nprogress.bar <- create_progress_bar(\"text\")\nprogress.bar$init(k)\nbest.mdl <- list()\nfor(i in 2:k){\n  best.mdl[[i-1]] <- LDA(l1_dtm, i)\n  progress.bar$step()\n}\nbest.mdl.logL <- as.data.frame(as.matrix(lapply(best.mdl, logLik)))\nbest.mdl.logL.df <- data.frame(topics=c(2:k), LL=as.numeric(as.matrix(best.mdl.logL)))\ndev.new()\nplot(best.mdl.logL.df$topics,best.mdl.logL.df$LL,main = 'Parameter estimation', xlab = 'Topic', ylab = 'Log liklihood of model')\nresultMat <- matrix(c(best.mdl.logL.df$topics,best.mdl.logL.df$LL),ncol = 2)\nsave(resultMat, file = \"logliktopics.RData\")\n### 50 mdl\ndim(l1_dtm)\nsummary(col_sums(l1_dtm))\n\n############### tf-idf weighting optional\nterm_tfidf <-\n  tapply(l1_dtm$v/row_sums(l1_dtm)[l1_dtm$i], l1_dtm$j, mean) *\n  log2(nDocs(l1_dtm)/col_sums(l1_dtm > 0))\n\nsummary(term_tfidf)\n# adapt criteria\nl1_dtm <- l1_dtm[,term_tfidf >= 0.1]\nl1_dtm <- l1_dtm[row_sums(l1_dtm) > 0,]\nsummary(col_sums(l1_dtm))\n##############\ndim(l1_dtm)\n\nk <- 50\nSEED <- 2010\n\n\nl1_TM <-\n  list(VEM = LDA(l1_dtm, k = k, control = list(seed = SEED)),\n       VEM_fixed = LDA(l1_dtm, k = k,\n                       control = list(estimate.alpha = FALSE, seed = SEED)),\n       Gibbs = LDA(l1_dtm, k = k, method = \"Gibbs\",\n                   control = list(seed = SEED, burnin = 1000,\n                                  thin = 100, iter = 1000)),\n       CTM = CTM(l1_dtm, k = k,\n                 control = list(seed = SEED,\n                                var = list(tol = 10^-4), em = list(tol = 10^-3))))\n\nsave.image(file = \"loevschal_tm_k50.RData\")\n###\nload(file = \"loevschal_tm_k50.RData\")\n\ntopic <- topics(l1_TM[[\"Gibbs\"]], 5)\nterms <- terms(l1_TM[[\"Gibbs\"]], 10)\n\n\nwrite.table(terms, file = \"someTerms.csv\",sep = ',')\nwrite.table(topic, file = \"topicSaturation.csv\",sep = ',')\n\n\n\n",
+    "created" : 1469787079768.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "21357346",
+    "id" : "9CBD636",
+    "lastKnownWriteTime" : 1469806348,
+    "path" : "~/projects/loevschal/autotagger.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 26,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

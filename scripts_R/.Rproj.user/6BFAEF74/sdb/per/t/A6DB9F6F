@@ -1,0 +1,18 @@
+{
+    "contents" : "shell.exec('http://www.r-bloggers.com/variable-importance-plot-and-variable-selection/')\n# tutorial on variable/feature importance\n",
+    "created" : 1469189373792.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1051404694",
+    "id" : "A6DB9F6F",
+    "lastKnownWriteTime" : 1469189412,
+    "path" : "~/courses/au_summer_university/summer_u2016/classes/tutorials/variable_importance.R",
+    "project_path" : "variable_importance.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 18,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

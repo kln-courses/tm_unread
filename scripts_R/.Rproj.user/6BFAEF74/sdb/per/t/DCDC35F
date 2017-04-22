@@ -1,0 +1,18 @@
+{
+    "contents" : "install.packages('babynames')\n\nlibrary(babynames) # data package\nlibrary(dplyr)     # provides data manipulating functions.\nlibrary(magrittr)  # ceci n'est pas un pipe\nlibrary(ggplot2)   # for graphics\n\nbabynames %>%\n  filter(name %>% substr(1, 3) %>% equals(\"Ste\")) %>%\n  group_by(year, sex) %>%\n  summarize(total = sum(n)) %>%\n  qplot(year, total, color = sex, data = ., geom = \"line\") %>%\n  add(ggtitle('Names starting with \"Ste\"')) %>%\n  print\n\n",
+    "created" : 1467891564277.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3109546578",
+    "id" : "DCDC35F",
+    "lastKnownWriteTime" : 1467892738,
+    "path" : "C:/Users/KLN/some_r/pipe_tutorial.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

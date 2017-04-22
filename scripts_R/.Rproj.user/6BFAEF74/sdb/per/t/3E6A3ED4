@@ -1,0 +1,18 @@
+{
+    "contents" : "rm(list = ls())\ndd = '~/courses/au_summer_university/summer_u2016/supervision/old_lang/'\nsetwd(dd)\ndir()\nlibrary(tm)\n# import files with IETF language tag\ncor  <- Corpus(DirSource(dd, encoding = \"UTF-8\"))#, readerControl = list(language = \"DK\"))\nfilenames <- names(cor)\ncor[[2]][1]\ndtm <- DocumentTermMatrix(cor)\n\n",
+    "created" : 1469546587251.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4048785194",
+    "id" : "3E6A3ED4",
+    "lastKnownWriteTime" : 1469546867,
+    "path" : "~/courses/au_summer_university/summer_u2016/supervision/old_lang_import.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 20,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

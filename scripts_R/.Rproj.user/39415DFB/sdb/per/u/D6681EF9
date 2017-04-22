@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "# preprocessing\nrm(list = ls())\n# wd <- 'C:/Users/KLN/some_r'\n#wd = '~/courses/au_summer_university/summer_u2016/classes/tutorials'\nwd <- '/home/kln/Documents/education/tm_R/some_r';\nsetwd(wd)\ngetwd()\n\nsource(\"util_fun.R\")# input and parse file\n\n### data extraction\n# make data directory\ndd <-paste(wd,'/data',sep=\"\")\ndir.create(dd)\n\n",
+    "created" : 1477484374687.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "3707701645",
+    "id" : "D6681EF9",
+    "lastKnownWriteTime" : 0,
+    "last_content_update" : 1477484963238,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

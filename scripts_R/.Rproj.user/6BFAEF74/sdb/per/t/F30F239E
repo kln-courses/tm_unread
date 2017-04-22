@@ -1,0 +1,18 @@
+{
+    "contents" : "wd <- 'C:/Users/KLN/some_r'\ndd <-paste(wd,'/readData',sep=\"\")\nfilename.v = paste(dd,'/01.txt',sep=\"\")\n\n\ndd <- ''# data directory\n\ntext.v <- scan(filename.v, what = 'character', sep='\\n', encoding = 'UTF-8')\n\n\n\n# data import from directory\nfiles.v <- dir(path = dd, pattern='.*txt')\nmaketext <- function(files,directory){\n  text.word.l <- list()\n  for(i in 1:length(files)){\n    text.v <- scan(paste(directory, files[i], sep=\"/\"), what=\"character\", sep=\"\\n\", encoding = 'UTF-8') # read a file\n#    text.v <- paste(text.v, collapse=\" \") # collapse lines\n#    text.lower.v <- tolower(text.v) # casefolding\n#    text.words.v <- strsplit(text.lower.v, \"\\\\W\") # tokenize\n#    text.words.v <- unlist(text.words.v) # transform list to vector\n#    text.words.v <- text.words.v[which(text.words.v!=\"\")] # remove blanks\n#    text.word.l[[files[i]]] <- text.words.v # update list\n    text.word.l[[files[i]]] <- text.v\n  }\n  #names(text.word.l) <- gsub(\"\\\\..*\",\"\",files)\n  return(text.word.l)\n}  \n\nmydata <- maketext(files.v,dd)\n# all in on hyper session\ntheMess <- unlist(mydata)\nnames(theMess[[1003]])\n\nlibrary(tm)\n\n\n\nstr(mydata)\ntest <- unlist(mydata)\ntest[[6]]\n\n\nd1.chr <- mydata[[1]]\nd1.chr <- theMess\n\nd1.l <- list()\nid.l <- list()\nfor(i in 1:length(d1.chr)){\n  d1.l[[i]] <- unlist(strsplit(d1.chr[i], '\\\\W'))  \n  id.l[[i]] <- unlist(d1.l[[i]][1])\n}\nid.v <- as.character(id.l)\n# remove blanks\nidx <- which(id.v != \"\")\nid.v <- id.v[idx]\nd1.chr <- d1.chr[idx]\n\nlibrary(tm)\nd1.cor <- Corpus(VectorSource(d1.chr))\n# preproces\nd1.cor <- tm_map(d1.cor, content_transformer(tolower))\ntext.cor <- tm_map(text.cor, removePunctuation)\ntext.cor <- tm_map(text.cor, removeNumbers)\ntext.cor <- tm_map(text.cor, removeWords, stopwords(\"english\"))\ntext.cor <- tm_map(text.cor, stemDocument)\ntext.cor <- tm_map(text.cor, stripWhitespace)\n\n\nd1.dtm <- DocumentTermMatrix(d1.cor)\ndim(d1.dtm)\nd1.mat <- as.matrix(d1.dtm)\n\n\nid.v <- as.numeric(id.v)\n\n\nidx3 <- which(id.v == unique(id.v)[3])\n\nd1.mat[idx3,]\n\n\n\n\n\n",
+    "created" : 1470137864031.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1310017298",
+    "id" : "F30F239E",
+    "lastKnownWriteTime" : 1470148069,
+    "path" : "C:/Users/KLN/Desktop/someReadingGroup.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled3"
+    },
+    "relative_order" : 27,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
